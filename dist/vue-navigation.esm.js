@@ -18,18 +18,23 @@ var Navigator = function (store, moduleName) {
   if (store) {
     store.registerModule(moduleName, {
       state: {
+        direction: '',
         routes: Routes
       },
       mutations: {
         'navigation/FORWARD': function (state, name) {
+          state.direction = 'forward';
           state.routes.push(name);
         },
         'navigation/BACK': function (state, count) {
+          state.direction = 'back';
           state.routes.splice(state.routes.length - count, count);
         },
         'navigation/REFRESH': function (state, count) {
+          state.direction = 'refresh';
         },
         'navigation/RESET': function (state) {
+          state.direction = 'reset';
           state.routes = [];
         }
       }

@@ -6,18 +6,23 @@ export default (store, moduleName) => {
   if (store) {
     store.registerModule(moduleName, {
       state: {
+        direction: '',
         routes: Routes
       },
       mutations: {
         'navigation/FORWARD': (state, name) => {
+          state.direction = 'forward'
           state.routes.push(name)
         },
         'navigation/BACK': (state, count) => {
+          state.direction = 'back'
           state.routes.splice(state.routes.length - count, count)
         },
         'navigation/REFRESH': (state, count) => {
+          state.direction = 'refresh'
         },
         'navigation/RESET': (state) => {
+          state.direction = 'reset'
           state.routes = []
         }
       }
