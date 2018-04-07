@@ -1,5 +1,5 @@
 /**
-* vue-navigation v0.2.1
+* vue-navigation v0.2.3
 * https://github.com/zack24q/vue-navigation
 * Released under the MIT License.
 */
@@ -122,8 +122,10 @@ var index = {
     router.beforeEach(function (to, from, next) {
       var matched = to.matched[0];
       if (matched) {
+        // let component = matched.components.default
+        // component.name = component.name || 'anonymous-component-' + matched.path
         var component = matched.components.default;
-        component.name = component.name || 'anonymous-component-' + matched.path;
+        component.name = to.path;
       }
       next();
     });
