@@ -122,10 +122,10 @@ var index = {
     router.beforeEach(function (to, from, next) {
       var matched = to.matched[0];
       if (matched) {
-        // let component = matched.components.default
-        // component.name = component.name || 'anonymous-component-' + matched.path
         var component = matched.components.default;
-        component.name = to.path;
+        component.name = component.name || 'anonymous-component-' + matched.path;
+        // let component = matched.components.default
+        // component.name = to.path
       }
       next();
     });

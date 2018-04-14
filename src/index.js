@@ -15,10 +15,10 @@ export default {
     router.beforeEach((to, from, next) => {
       let matched = to.matched[0]
       if (matched) {
-        // let component = matched.components.default
-        // component.name = component.name || 'anonymous-component-' + matched.path
         let component = matched.components.default
-        component.name = to.path
+        component.name = component.name || 'anonymous-component-' + matched.path
+        // let component = matched.components.default
+        // component.name = to.path
       }
       next()
     })
